@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import { Redirect, Switch, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Footer from "./components/Footer";
+import Products from "./components/Products";
+import { DataProvider } from "./components/DataProvider";
+import Cart from "./components/Cart";
+import Error from "./components/Error";
 
 function App() {
+
+  const [search, setSearch] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataProvider>
+      <>
+        <Switch>
+          <Route exact path="/error404" component={Error} />
+          <Route>
+            <Header setSearch={setSearch} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/products" component={Products} />
+              <Route exact path="/cart" component={Cart} />
+              <Redirect to="/error404" />
+              <Products />
+            </Switch>
+            <Footer />  
+          </Route>
+        </Switch>
+      </>
+    </DataProvider>
   );
 }
 
