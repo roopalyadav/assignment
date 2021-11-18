@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { DataContext } from "./DataProvider";
 
 export default function Header(props) {
@@ -17,18 +18,18 @@ export default function Header(props) {
 
         largeIcon: {
             width: 28,
-            height: 28
+            height: 28,
         },
 
         styleMenu: {
             top: menu ? 0 : "-100%",
-            backgroundColor: "#2b6777"
+            backgroundColor: "#00b7ff"
         }
     };
 
-    const handleChange = event => {
-        props.setSearch(event.target.value);
-    };
+    // const handleChange = event => {
+    //     props.setSearch(event.target.value);
+    // };
 
     return (
         <header>
@@ -36,9 +37,9 @@ export default function Header(props) {
                 <h1><Link to="/">Shopify</Link></h1>
             </div>
 
-            <form action="#" autoComplete="off">
+            {/* <form action="#" autoComplete="off">
                 <input type="text" id="input-search" name="search" placeholder="Search..." onChange={handleChange} />
-            </form>
+            </form> */}
 
             <ul style={styles.styleMenu}>
                 <li><Link to="/">Home</Link></li>
